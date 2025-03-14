@@ -4,6 +4,10 @@ let idUno;
 let idDue;
 let idTre;
 
+let currentUno = 0;
+let currentDue = 0;
+let currentTre = 0;
+
 let vittorie = 0;
 let tentativi = 0;
 let percentuale = 0;
@@ -16,9 +20,9 @@ const immagini = ["static/images/1.png", "static/images/2.png", "static/images/3
 
 function avviaSlot() {
 
-    cambiaImmagine("uno", 0);
-    cambiaImmagine("due", 0);
-    cambiaImmagine("tre", 0);
+    cambiaImmagine("uno", currentUno);
+    cambiaImmagine("due", currentDue);
+    cambiaImmagine("tre", currentTre);
     document.getElementById("gioca").disabled = true;
     document.getElementById("ferma").disabled = false;
 }
@@ -33,10 +37,13 @@ function cambiaImmagine(position, currentIndex) {
     document.getElementById(position).src = immagini[currentIndex];
 
     if (position === "uno") {
+        currentUno = currentIndex;
         idUno = setTimeout(() => cambiaImmagine(position, currentIndex), delayUno);
     } else if (position === "due") {
+        currentDue = currentIndex;
         idDue = setTimeout(() => cambiaImmagine(position, currentIndex), delayDue);
     } else if (position === "tre") {
+        currentTre = currentIndex;
         idTre = setTimeout(() => cambiaImmagine(position, currentIndex), delayTre);
     }
 }
